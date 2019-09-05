@@ -3,6 +3,15 @@ require "./test/test_helper"
 # create describe for room test
 describe "Room class" do
   
+  # create test to check that it makes a new instance of room
+  it "makes a new instance of Room class" do
+    # Arrange & Act
+    test_room = Hotel::Room.new(room_number: 1)
+    
+    # Assert
+    expect(test_room).must_be_instance_of Hotel::Room
+  end
+  
   # create test to check that the default cost is $200
   it "makes the default cost of each room $200" do
     # Arrange
