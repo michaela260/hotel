@@ -91,5 +91,28 @@ describe "Hotel::DateRange class" do
       expect{test_date_range.date_range_includes?(date: test_date)}.must_raise ArgumentError
       expect{test_date_range.date_range_includes?(date: nil)}.must_raise ArgumentError
     end
+    
+    it "returns true if the given date is included in the date range" do
+      test_date_range = Hotel::DateRange.new(start_date: Date.today.prev_day, end_date: Date.today.next_day)
+      test_date_range_2 = Hotel::DateRange.new(start_date: Date.today, end_date: Date.today.next_day)
+      test_date_range_3 = Hotel::DateRange.new(start_date: Date.today.prev_day, end_date: Date.today)
+      test_date = Date.today
+      
+      expect(test_date_range.date_range_includes?(date: test_date)).must_equal true
+      expect(test_date_range_2.date_range_includes?(date: test_date)).must_equal true
+      expect(test_date_range_3.date_range_includes?(date: test_date)).must_equal true
+    end
+    
+    it "returns false if the given date is not included in the date range" do
+      test_date_range = Hotel::DateRange.new(start_date: Date.today.prev_day, end_date: Date.today.next_day)
+      test_date_range_2 = Hotel::DateRange.new(start_date: Date.today, end_date: Date.today.next_day)
+      test_date_range_3 = Hotel::DateRange.new(start_date: Date.today.prev_day, end_date: Date.today)
+      test_date = Date.today.next_day.next_day
+      test_date_2 = Date.today.prev_day
+      
+      expect(test_date_range.date_range_includes?(date: test_date)).must_equal false
+      expect(test_date_range_2.date_range_includes?(date: test_date_2)).must_equal false
+      expect(test_date_range_3.date_range_includes?(date: test_date)).must_equal false
+    end
   end
 end
