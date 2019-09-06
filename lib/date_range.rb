@@ -18,6 +18,7 @@ module Hotel
         raise ArgumentError.new "Error! You entered a start date later than the end date! Please try again."
       end
     end
+    
     # define overlap? method with the parameter being date_range_2
     def overlap?(date_range_2)
       if date_range_2 == nil
@@ -31,5 +32,19 @@ module Hotel
         return true
       end
     end
+    
+    # check if the date range includes a given date
+    def date_range_includes?(date: )
+      if date == nil || date.class != Date
+        raise ArgumentError.new "Error! You did not provide a valid date."
+      end
+      
+      if date >= @start_date && date <= @end_date
+        return true
+      else
+        return false
+      end
+    end
+    
   end
 end
