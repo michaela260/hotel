@@ -47,7 +47,7 @@ module Hotel
     end
     
     def number_of_nights
-      return (@end_date - @start_date)
+      return @end_date - @start_date
     end
     
   end
