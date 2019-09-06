@@ -115,4 +115,11 @@ describe "Hotel::DateRange class" do
       expect(test_date_range_3.date_range_includes?(date: test_date)).must_equal false
     end
   end
+  
+  describe "number of nights method" do
+    it "accurately counts the number of nights between two dates" do
+      test_date_range = Hotel::DateRange.new(start_date: Date.today.prev_day, end_date: Date.today.next_day)
+      expect(test_date_range.number_of_nights).must_equal 2
+    end 
+  end
 end
