@@ -20,7 +20,7 @@ module Hotel
     end
     # define overlap? method with the parameter being date_range_2
     def overlap?(date_range_2)
-      if date_range_2.start_date.class != Date || date_range_2.end_date.class != Date || date_range_2 == nil || date_range_2.start_date >= date_range_2.end_date
+      if date_range_2 == nil
         raise ArgumentError.new "Error! You did not enter a valid date range to compare."
       end
       

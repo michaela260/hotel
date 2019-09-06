@@ -41,6 +41,15 @@ describe "Hotel::DateRange class" do
   
   # describe the overlap? method
   describe "overlap? method" do
+    
+    # test that it raises an ArgumentError if given a nil second date range
+    it "raises an ArgumentError if given an invalid date range to compare" do
+      test_date = Hotel::DateRange.new(Date.today.prev_day, Date.today)
+      test_date_2 = nil
+      
+      expect{test_date.overlap?(test_date_2)}.must_raise ArgumentError
+    end
+    
     # test that it returns false when given 2 date ranges that do not overlap
     it "returns false when given date ranges that do not overlap" do
       test_date = Hotel::DateRange.new(Date.today.prev_day, Date.today)
