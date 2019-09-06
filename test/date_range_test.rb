@@ -81,4 +81,15 @@ describe "Hotel::DateRange class" do
       expect(result).must_equal false
     end 
   end
+  
+  # describe the date_range_includes? method
+  describe "date_range_includes? method" do
+    it "raises an ArgumentError if a valid date is not provided" do
+      test_date_range = Hotel::DateRange.new(start_date: Date.today.prev_day, end_date: Date.today)
+      test_date = "January A"
+      
+      expect{test_date_range.date_range_includes?(date: test_date)}.must_raise ArgumentError
+      expect{test_date_range.date_range_includes?(date: nil)}.must_raise ArgumentError
+    end
+  end
 end
