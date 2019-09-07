@@ -12,8 +12,10 @@ module Hotel
       @start_date = start_date
       @end_date = end_date
       
-      if @start_date == nil || @end_date == nil
-        raise ArgumentError.new "Error! You entered a nil start or end date."
+      if @start_date == nil
+        raise ArgumentError.new "Error! You entered a nil start date: #{@start_date}"
+      elsif @end_date == nil
+        raise ArgumentError.new "Error! You entered a nil end date: #{@end_date}"
       elsif @start_date >= @end_date
         raise ArgumentError.new "Error! You entered a start date later than the end date! Please try again."
       end
@@ -39,7 +41,7 @@ module Hotel
         raise ArgumentError.new "Error! You did not provide a valid date."
       end
       
-      if date >= @start_date && date <= @end_date
+      if date >= @start_date && date < @end_date
         return true
       else
         return false
