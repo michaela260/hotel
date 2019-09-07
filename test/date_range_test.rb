@@ -100,7 +100,7 @@ describe "Hotel::DateRange class" do
       
       expect(test_date_range.date_range_includes?(date: test_date)).must_equal true
       expect(test_date_range_2.date_range_includes?(date: test_date)).must_equal true
-      expect(test_date_range_3.date_range_includes?(date: test_date)).must_equal true
+      expect(test_date_range_3.date_range_includes?(date: test_date)).must_equal false
     end
     
     it "returns false if the given date is not included in the date range" do
