@@ -3,17 +3,14 @@
 module Hotel
   class Room
     
-    attr_reader :room_cost, :room_number
+    attr_reader :room_number
     
-    def initialize(room_cost: 200, room_number: )
+    def initialize(room_number: )
       
-      if room_cost <= 0 || room_cost.class != Float && room_cost.class != Integer
-        raise ArgumentError.new "Error! You entered an invalid room cost. Please enter a positive number: "
-      elsif room_number <= 0 || room_number.class != Integer
+      if room_number <= 0 || room_number.class != Integer
         raise ArgumentError.new "Error! You entered an invalid room"
       end
       
-      @room_cost = room_cost
       @room_number = room_number
       
     end
