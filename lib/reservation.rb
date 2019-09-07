@@ -5,13 +5,13 @@ require_relative "date_range"
 module Hotel
   class Reservation
     
-    attr_reader :date_range, :room_number, :cost_per_night, :booking_number, :total_cost, :block_id
+    attr_reader :date_range, :room_number, :cost_per_night, :reservation_number, :total_cost, :block_id
     
-    def initialize(date_range: , block_id: 0)
+    def initialize(date_range:, room_number:, reservation_number: , block_id: 0)
       @date_range = date_range
       @block_id = block_id
-      @room_number = rand(1..20)
-      @booking_number = rand 100..999
+      @room_number = room_number
+      @reservation_number = reservation_number
       if @block_id == 0
         @cost_per_night = 200
       else
