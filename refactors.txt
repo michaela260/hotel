@@ -1,0 +1,6 @@
+There's a lot of refactoring to do:
+  - Update the names of variables in the tests so that they are more descriptive and not so similar
+  - Refactor manager_test so that there's less repetition of common tests
+  - Refactor 'find' methods in manager.rb to make them more DRY 
+  - Refactor 'block_has_rooms_available?' method in manager.rb because it is repeated in 'make_reservation_in_block'
+  - Add method to find availabilty by date range rather than a single date
