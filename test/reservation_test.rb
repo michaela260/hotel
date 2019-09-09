@@ -9,7 +9,7 @@ describe "Reservation class" do
     before do
       @test_date_range = Hotel::DateRange.new(start_date: Date.today.prev_day, end_date: Date.today.next_day)
       @test_reservation = Hotel::Reservation.new(date_range: @test_date_range, room_number: 15, reservation_number: 500)
-      @test_reservation_2 = Hotel::Reservation.new(date_range: @test_date_range, room_number: 15, block_id: 1, reservation_number: 300)
+      @test_reservation_2 = Hotel::Reservation.new(date_range: @test_date_range, room_number: 15, block_id: 1, cost_per_night: 175, reservation_number: 300)
     end
     
     it "creates an instance of Reservation " do
@@ -33,11 +33,11 @@ describe "Reservation class" do
       expect(@test_reservation_2.block_id).must_equal 1
     end
     
-    it "stores the cost per night as $150 if a block id is provided" do
-      expect(@test_reservation_2.cost_per_night).must_equal 150
+    it "stores the cost per night as discounted if an alternate cost is provided" do
+      expect(@test_reservation_2.cost_per_night).must_equal 175
     end
     
-    it "stores the cost per night as $200 if a block id is not provided" do
+    it "stores the cost per night as $200 by default" do
       expect(@test_reservation.cost_per_night).must_equal 200
     end
     
