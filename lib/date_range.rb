@@ -1,13 +1,10 @@
 require "date"
 
-# create class DateRange
-
 module Hotel
   class DateRange
     
     attr_reader :start_date, :end_date
     
-    # define initialize method with attributes start_date and end_date
     def initialize(start_date: , end_date: )
       @start_date = start_date
       @end_date = end_date
@@ -21,7 +18,6 @@ module Hotel
       end
     end
     
-    # define overlap? method with the parameter being date_range_2
     def overlap?(date_range_2)
       if date_range_2 == nil
         raise ArgumentError.new "Error! You did not enter a valid date range to compare."
@@ -35,7 +31,6 @@ module Hotel
       end
     end
     
-    # check if the date range includes a given date
     def date_range_includes?(date: )
       if date == nil || date.class != Date
         raise ArgumentError.new "Error! You did not provide a valid date."
