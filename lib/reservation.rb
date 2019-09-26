@@ -15,5 +15,10 @@ module Hotel
       @cost_per_night = cost_per_night
       @total_cost = @cost_per_night * @date_range.number_of_nights
     end
+    
+    def includes_date?(date: )
+      @date_range.date_range_includes?(date: date)
+    end
+    
   end
 end

@@ -52,9 +52,7 @@ module Hotel
     def list_of_reservations_by_date(date_to_search: )
       list_of_reservations_by_date = []
       @list_of_all_reservations.each do |reservation|
-        if reservation.date_range.date_range_includes?(date: date_to_search)
-          list_of_reservations_by_date << reservation
-        end
+        list_of_reservations_by_date << reservation if reservation.includes_date?(date: date_to_search)
       end
       
       return list_of_reservations_by_date
