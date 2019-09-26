@@ -35,3 +35,9 @@
 
 9. Bonus question once you've read Metz ch. 3: Which implementation is more loosely coupled?
   Implementation B is more loosely coupled because you are less likely to have to alter many of the classes to change one thing. There are fewer dependencies between the clases in Implementation B.
+
+~~ REVISITING HOTEL ~~
+
+One place that I could refactor my code is the list_of_reservations_by_date method in the Manager class. This method as it is now has to find the date range attribute of each Reservation, and then call a method on this date range. I could make the code more loosely coupled by moving part of this functionality to the Reservation class itself.
+
+In Reservation, I should make a method includes_date? that takes requires a specific date be entered as an argument and then returns true if the reservation includes the given date, and false if it does not. Then, in manager, I only have to call this method instead of taking two steps to get an instance of Reservation and DateRange.
